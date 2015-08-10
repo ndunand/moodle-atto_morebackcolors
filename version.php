@@ -28,3 +28,5 @@ defined('MOODLE_INTERNAL') || die();
 $plugin->version   = 2015081000;        // The current plugin version (Date: YYYYMMDDXX).
 $plugin->requires  = 2014110400;        // Requires this Moodle version.
 $plugin->component = 'atto_morebackcolors';  // Full name of the plugin (used for diagnostics).
+$plugin->release = '1.0.0';
+$plugin->maturity = MATURITY_STABLE;
