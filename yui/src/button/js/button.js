@@ -53,7 +53,7 @@ Y.namespace('M.atto_morebackcolors').Button = Y.Base.create('button', Y.M.editor
             items: items
         });
     },
-    
+
     /**
      * Change the background color to the specified color.
      *
