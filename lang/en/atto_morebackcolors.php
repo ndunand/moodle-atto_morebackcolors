@@ -26,3 +26,13 @@
 $string['pluginname'] = 'More background colours';
 $string['availablecolors'] = 'Available colours';
 $string['availablecolors_desc'] = 'You may define available colours by listing them here, one hexcode per line. Note that changing these values only affects the appearance of the Background Colour menu but does not affect existing text.';
+$string['customcolor'] = 'Custom background colour';
+$string['submit'] = 'Submit';
+$string['custom'] = 'Custom background colour (in hex)';
+$string['setting_custom'] = 'Allow custom colour';
+$string['setting_custom_desc'] = 'Allow the users to enter a custom background colour in hex';
+$string['hsl'] = 'HSL:';
+$string['rgb'] = 'RGB:';
+$string['hexadecimal'] = 'Hexadecimal:';
+$string['saturation'] = 'Saturation: ';
+$string['luminance'] = 'Luminance: ';

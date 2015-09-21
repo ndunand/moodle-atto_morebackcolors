@@ -37,7 +37,26 @@ function atto_morebackcolors_params_for_js($elementid, $options, $fpoptions) {
             $colors [] = $color;
         }
     }
+    $allowcustom = get_config ('atto_morebackcolors', 'allowcustom');
     return array (
-            'colors' => $colors
+            'colors' => $colors,
+            'allowcustom' => $allowcustom
     );
+}
+
+/**
+ * Initialise the js strings required for this module.
+ */
+function atto_morebackcolors_strings_for_js() {
+    global $PAGE;
+
+    $PAGE->requires->strings_for_js(array('custom',
+                                          'customcolor',
+                                          'submit',
+                                          'rgb',
+                                          'hsl',
+                                          'hexadecimal',
+                                          'saturation',
+                                          'luminance'),
+                                    'atto_morebackcolors');
 }
