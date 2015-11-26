@@ -37,39 +37,64 @@ YUI.add('moodle-atto_morebackcolors-button', function (Y, NAME) {
 Y.namespace('M.atto_morebackcolors').Button = Y.Base.create('button', Y.M.editor_atto.EditorPlugin, [], {
     initializer: function(config) {
         var items = [];
-        Y.Array.each(config.colors, function(color) {
-            items.push({
-                text: '<div style="width: 20px; height: 20px; border: 1px solid #CCC; background-color: ' +
-                    color + '"></div>',
-                callbackArgs: color,
-                callback: this._changeStyle
-            });
+        var colors = this.get('colors');
+        Y.Array.each(colors, function(colors) {
+            if (colors.trim()) {
+                var color_array = colors.split(/\s+/);
+                var stringOfDiv = "";
+                for (var i = 0; i < color_array.length; i++) {
+                    var color = color_array[i].trim();
+                    if (/(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(color)) {
+                        stringOfDiv = stringOfDiv +
+                        '<div style="width: 20px; margin-right: 5px; height: 20px; border: 1px solid #CCC; background-color: ' +
+                        color +
+                        '" data-color="' + color + '"></div>';
+                    }
+                }
+                items.push({
+                    text: stringOfDiv,
+                    callback: this._changeStyle
+                });
+            }
         });
 
         this.addToolbarMenu({
             icon: 'e/text_highlight',
             overlayWidth: '4',
+            menuColor: '#333333',
             globalItemConfig: {
                 callback: this._changeStyle
             },
             items: items
         });
     },
-    
+
     /**
-     * Change the background color to the specified color.
+     * Change the font color to the specified color.
      *
      * @method _changeStyle
      * @param {EventFacade} e
-     * @param {string} color The new background color
+     * @param {string} color The new font color
      * @private
      */
-    _changeStyle: function(e, color) {
+    _changeStyle: function (e) {
         this.get('host').formatSelectionInlineStyle({
-            backgroundColor: color
+            backgroundColor: e.target.getAttribute("data-color")
         });
     }
+}, {
+    ATTRS: {
+        /**
+         * The list of available colors
+         *
+         * @attribute colors
+         * @type array
+         * @default {}
+         */
+        colors: {
+            value: {}
+        }
+    }
 });
-
 
 }, '@VERSION@');

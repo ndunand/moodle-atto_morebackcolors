@@ -19,6 +19,7 @@
  * @package atto_morebackcolors
  * @copyright 2015 University of Strathclyde
  * @author Michael Aherne <michael.aherne@strath.ac.uk>
+ * @author     Abu Zakaria <zakaria.tanim@gmail.com>
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -31,13 +32,5 @@ function atto_morebackcolors_params_for_js($elementid, $options, $fpoptions) {
     // Pass the number of visible groups as a param.
     $availablecolors = get_config ('atto_morebackcolors', 'availablecolors');
     $possiblecolors = explode ("\n", (str_replace ("\r", '', $availablecolors)));
-    $colors = array ();
-    foreach ($possiblecolors as $color) {
-        if (preg_match ('/^#?([0-9a-fA-F]{3})|([0-9a-fA-F]{6})$/', $color, $matches)) {
-            $colors [] = $color;
-        }
-    }
-    return array (
-            'colors' => $colors
-    );
+    return array('colors' => $possiblecolors);
 }
