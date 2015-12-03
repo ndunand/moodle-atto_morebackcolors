@@ -36,8 +36,8 @@ if ($ADMIN->fulltree) {
     $setting = new admin_setting_configtextarea ('atto_morebackcolors/availablecolors', $name, $desc, $default);
     $settings->add ($setting);
 
-    $name = new lang_string ('setting_custom', 'atto_morebackcolors');
-    $desc = new lang_string ('setting_custom_desc', 'atto_morebackcolors');
+    $name = new lang_string ('allow_custom', 'atto_morebackcolors');
+    $desc = new lang_string ('allow_custom_desc', 'atto_morebackcolors');
     $default = 0;
     $setting = new admin_setting_configcheckbox ('atto_morebackcolors/allowcustom', $name, $desc, $default);
     $settings->add ($setting);
