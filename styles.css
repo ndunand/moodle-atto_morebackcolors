@@ -6,3 +6,9 @@
     display: flex;
 }
 
+.atto_menuentry a[role="menuitem"]:hover{
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
+
