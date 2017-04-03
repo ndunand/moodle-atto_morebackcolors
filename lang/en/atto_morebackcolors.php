@@ -18,21 +18,23 @@
  * Atto text editor integration version file.
  *
  * @package    atto_morebackcolors
- * @copyright  2015 University of Strathclyde
- * @author     Michael Aherne <michael.aherne@strath.ac.uk>
+ * @copyright  2014-2015 Université de Lausanne
+ * @author     Nicolas Dunand <nicolas.dunand@unil.ch>
+ * @author     Rossiani Wijaya  <rwijaya@moodle.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'More background colours';
-$string['availablecolors'] = 'Available colours';
-$string['availablecolors_desc'] = 'You may define available colours by listing them here, one hexcode per line. Note that changing these values only affects the appearance of the Background Colour menu but does not affect existing text.';
-$string['customcolor'] = 'Custom background colour';
+$string['pluginname'] = 'More font background colors';
+$string['availablecolors'] = 'Available colors';
+$string['availablecolors_desc'] = 'You may define available colors by listing them here, as you want them displayed in the font background color drop-down menu. If you want to display a 4x4 matrix of colors, enter 4 lines of 4 hex color codes, separared by spaces.<br><br>Note that changing these values only affects the appearance of the Font background Color menu but does not affect existing colored texts.';
+$string['customcolor'] = 'Custom font background color';
 $string['submit'] = 'Submit';
-$string['custom'] = 'Custom background colour (in hex)';
-$string['setting_custom'] = 'Allow custom colour';
-$string['setting_custom_desc'] = 'Allow the users to enter a custom background colour in hex';
+$string['custom'] = 'Custom font background color (in hex)';
+$string['setting_custom'] = 'Allow custom background color';
+$string['setting_custom_desc'] = 'Allow the users to chose a custom background color by using a color picker';
 $string['hsl'] = 'HSL:';
 $string['rgb'] = 'RGB:';
 $string['hexadecimal'] = 'Hexadecimal:';
 $string['saturation'] = 'Saturation: ';
 $string['luminance'] = 'Luminance: ';
+

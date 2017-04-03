@@ -18,15 +18,17 @@
  * Atto text editor integration version file.
  *
  * @package    atto_morebackcolors
- * @copyright  2015 University of Strathclyde
- * @author     Michael Aherne <michael.aherne@strath.ac.uk>
+ * @copyright  2014-2015 Université de Lausanne
+ * @author     Nicolas Dunand <nicolas.dunand@unil.ch>
+ * @author     Rossiani Wijaya  <rwijaya@moodle.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2015081000;        // The current plugin version (Date: YYYYMMDDXX).
-$plugin->requires  = 2014110400;        // Requires this Moodle version.
-$plugin->component = 'atto_morebackcolors';  // Full name of the plugin (used for diagnostics).
-$plugin->release = '1.0.0';
+$plugin->version   = 2016113000;
+$plugin->requires  = 2014050800;
+$plugin->component = 'atto_morebackcolors';
 $plugin->maturity = MATURITY_STABLE;
+$plugin->release = '1.2.4 for Moodle 2.7-3.2 (build 2016113000)';
+

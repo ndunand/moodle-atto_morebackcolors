@@ -15,10 +15,13 @@ YUI.add('moodle-atto_morebackcolors-button', function (Y, NAME) {
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-/*
+/**
+ * Atto text editor integration version file.
+ *
  * @package    atto_morebackcolors
- * @copyright  2015 University of Strathclyde
- * @author     Michael Aherne <michael.aherne@strath.ac.uk>
+ * @copyright  2014-2015 Université de Lausanne
+ * @author     Nicolas Dunand <nicolas.dunand@unil.ch>
+ * @author     Rossiani Wijaya  <rwijaya@moodle.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -33,6 +36,7 @@ YUI.add('moodle-atto_morebackcolors-button', function (Y, NAME) {
  * @class button
  * @extends M.editor_atto.EditorPlugin
  */
+
 
 var TEMPLATE = '' +
     '<form id="atto_morebackcolors_dialogue">' +
@@ -84,13 +88,25 @@ Y.namespace('M.atto_morebackcolors').Button = Y.Base.create('button', Y.M.editor
 
     initializer: function(config) {
         var items = [];
-        Y.Array.each(config.colors, function(color) {
-            items.push({
-                text: '<div style="width: 20px; height: 20px; border: 1px solid #CCC; background-color: ' +
-                    color + '"></div>',
-                callbackArgs: color,
-                callback: this._changeStyle
-            });
+        var colors = this.get('colors');
+        Y.Array.each(colors, function(colors) {
+            if (colors.trim()) {
+                var color_array = colors.split(/\s+/);
+                var stringOfDiv = "";
+                for (var i = 0; i < color_array.length; i++) {
+                    var color = color_array[i].trim();
+                    if (/(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(color)) {
+                        stringOfDiv = stringOfDiv +
+                        '<div style="width: 20px; margin-right: 5px; height: 20px; border: 1px solid #CCC; background-color: ' +
+                        color +
+                        '" data-color="' + color + '"></div>';
+                    }
+                }
+                items.push({
+                    text: stringOfDiv,
+                    callback: this._changeStyle
+                });
+            }
         });
         if (config.allowcustom === '1') {
             items.push({
@@ -99,11 +115,12 @@ Y.namespace('M.atto_morebackcolors').Button = Y.Base.create('button', Y.M.editor
                 callback: this._changeStyle
             });
         }
-
         this.addToolbarMenu({
             icon: 'e/text_highlight',
             overlayWidth: '4',
+            menuColor: '#333333',
             globalItemConfig: {
+                inlineFormat: true,
                 callback: this._changeStyle
             },
             items: items
@@ -111,11 +128,11 @@ Y.namespace('M.atto_morebackcolors').Button = Y.Base.create('button', Y.M.editor
     },
 
     /**
-     * Change the background color to the specified color.
+     * Change the font background color to the specified color.
      *
      * @method _changeStyle
      * @param {EventFacade} e
-     * @param {string} color The new background color
+     * @param {string} color The new font background color
      * @private
      */
     _changeStyle: function(e, color) {
@@ -123,13 +140,13 @@ Y.namespace('M.atto_morebackcolors').Button = Y.Base.create('button', Y.M.editor
             this._customColor();
         } else {
             this.get('host').formatSelectionInlineStyle({
-                backgroundColor: color
+                'background-color': e.target.getAttribute("data-color")
             });
         }
     },
 
     /**
-     * Change the background color to the custom color
+     * Change the font background color to the custom color
      *
      * @method _customColor
      * @param {EventFacade} e
@@ -165,7 +182,7 @@ Y.namespace('M.atto_morebackcolors').Button = Y.Base.create('button', Y.M.editor
             this.get('host').setSelection(this._currentSelection);
 
             this.get('host').formatSelectionInlineStyle({
-                backgroundColor: color
+                'background-color': color
             });
         }, this);
     },
@@ -287,6 +304,32 @@ Y.namespace('M.atto_morebackcolors').Button = Y.Base.create('button', Y.M.editor
 
         updatePickerUI();
     });
+    }
+}, {
+    ATTRS: {
+        /**
+         * The list of available colors
+         *
+         * @attribute colors
+         * @type array
+         * @default {}
+         */
+        colors: {
+            value: {}
+        }
+    }
+}, {
+    ATTRS: {
+        /**
+         * The list of available colors
+         *
+         * @attribute colors
+         * @type array
+         * @default {}
+         */
+        colors: {
+            value: {}
+        }
     }
 });
 
