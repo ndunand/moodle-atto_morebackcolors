@@ -73,6 +73,10 @@
     list-style-type: none;
 }
 
+#atto_morebackcolors_dialogue .yui3-dial-label-string {
+    display: none;
+}
+ 
 .atto_morebackcolors_button .atto_menuentry a[role="menuitem"]{
     display: flex;
     display: -webkit-flex;
